@@ -12,6 +12,117 @@
 
 <body>
 
+    <div id="login-area">
+        <h1 class="text-center">Welcome To Pioneer Bank</h1>
+        <div class="submit-area">
+            <h4>Login Here</h4>
+            <br>
+            <input type="text" class="form-control" placeholder="Enter your gmail here">
+            <br>
+            <input type="password" class="form-control" placeholder="Password">
+            <br>
+            <button id="loginBtn" class="btn btn-success">Enter</button>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div id="transaction-area">
+
+            <div class="col-md-4">
+                <div class="deposit status">
+                    <h5>Deposit</h5>
+                    <h2> $<span id="currentDeposit">00</span></h2>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw status">
+                    <h5>Withdraw</h5>
+                    <h2>$00</h2>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="balance status">
+                    <h5>Balance</h5>
+                    <h2>$ <span id="currentBalance"> 1240</span></h2>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="submit-area">
+                        <h4>Deposit</h4>
+                        <input id="depositAmount" type="text" placeholder="$amount you want to deposit"
+                            class="form-control">
+                        <br>
+                        <button id="addDeposit" class="btn btn-success">Deposit</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="submit-area">
+                        <h4> Withdraw</h4>
+                        <input id="withdrawAmount" type="text" placeholder="$amount you want to withdraw"
+                            class="form-control">
+                        <br>
+                        <button id="addWithdraw" class="btn btn-success">Withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        //  added event listener on login button 
+        const loginButton = document.getElementById("loginBtn");
+        loginButton.addEventListener('click', function (event) {
+            var loginArea = document.getElementById('login-area');
+            loginArea.style.display = 'none';
+            const transactionArea = document.getElementById('transaction-area');
+            transactionArea.style.display = 'block';
+        })
+
+        //  added event listener on Deposit Button 
+
+        const depositBtn = document.getElementById('addDeposit');
+        depositBtn.addEventListener('click', function (event) {
+            const depositNumber = getInputNumber('depositAmount');
+            // const depositAmount = document.getElementById('depositAmount').value;
+            // const depositNumber = parseFloat(depositAmount);
+            update('currentDeposit', depositNumber);
+            update('currentBalance', depositNumber);
+            document.getElementById('depositAmount').value = '';
+        }
+        )
+        const withdrawBtn = document.getElementById('addWithdraw');
+        withdrawBtn.addEventListener('click', function (event) {
+            const withdrawNumber = getInputNumber("withdrawAmount");
+            console.log('working');
+
+        })
+        function getInputNumber(id) {
+            const Amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(Amount);
+            return amountNumber;
+        }
+
+
+
+
+        function update(id, depositNumber) {
+            const currentBalance = document.getElementById(id).innerText;
+            const currentBalanceNumber = parseFloat(currentBalance);
+            const total = depositNumber + currentBalanceNumber;
+            document.getElementById(id).innerText = total;
+
+
+        }
+
+
+
+    </script>
 </body>
 
 </html>
